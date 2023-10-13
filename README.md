@@ -13,12 +13,12 @@ We provide the MC simlation files of atmospheric neutrinos for the following exp
 
 ## IceCube-Upgrade files
 
-<img src="/figures/IC_variables.png" width="400" />
+<img src="/figures/IC_variables.png" width="500" />
 
 
 ## ORCA file
 
-<img src="/figures/ORCA_variables.png" width="400" />
+<img src="/figures/ORCA_variables.png" width="500" />
 
 
 # Simple plotting code
