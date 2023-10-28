@@ -12,10 +12,41 @@ The code uses pretty standard requirements
 - h5py
 - matplotlib
 - numpy
+
 and can be installed with pip:
 ``` 
-pip install requirements.txt
+pip install -r requirements.txt
 ```
+
+Follow the instruction below to produce your first plots:
+
+>[!NOTE]
+>**usage:**
+>```
+>plot_sim.py [-h] --experiment [{SK,SK-Htag,SK-Gd,ORCA,ICUp,HK}] --fname [FNAME]
+>				[--variables VARIABLES [VARIABLES ...]] [--flavor [{e,mu,e+mu,tau}]] [--CP [{nu,antinu,both}]]
+>               [--interaction [{CC,NC,ALL,False}]] [--samples [SAMPLES]]
+>```
+>
+>**required arguments:**
+>  --experiment [{SK,SK-Htag,SK-Gd,ORCA,ICUp,HK}]
+>                         Experiment you would like to use.
+>  --fname [FNAME]       
+>					      Path to simulation file of the experiment you would like to use (SK, SK-Htag, SK-Gd, ORCA, ICUp or HK).
+>
+>**options:**
+>  -h, --help            show this help message and exit
+>  --variables VARIABLES [VARIABLES ...]
+>                        Set of variables you want to plot. Deault variables are the true neutrino energy, the reconstructed cosine of zenith angle and the reconstructed neutrino energy.
+>  --flavor [{e,mu,e+mu,tau}]
+>                        Flavor cut and breakdown. Default is break down of $\nu_{e}$ and $\nu_{\mu}$.
+>  --CP [{nu,antinu,both}]
+>                        Flavor cut and breakdown. Default is break down of both.
+>  --interaction [{CC,NC,ALL,False}]
+>                        Interaction mode(s) cut and breakdown. Dafult is no breakdown or cut.
+>  --samples [SAMPLES]   
+>						 Comma separated set of event samples you want to plot (for IC: tracks or cascades; for ORCA: tracks, intermediate or cascades; for SK and HK numerical indeces (displayed when calling these detectors)). Default is plotting all samples.
+
 
 # SuperK and HyperK files
 
@@ -45,7 +76,12 @@ pip install requirements.txt
 | `number_neutrons`,`neutrons`                | Number of tagged * neutrons                     | neutron
 | `itype`,`event_type`                        | Event ID (sample index)                       | itype
 
-* *Note that the number of tagged neutrons is only available in SK-Htag, SK-Gd and HK.*
+
+* *The number of tagged neutrons is only available in SK-Htag, SK-Gd and HK.*
+
+> [!NOTE]
+> There are more variables in these files that may be useful for the user, please look at their usage in [kamioka.py](kamkioka.py).
+
 
 
 # IceCube-Upgrade files
@@ -53,6 +89,9 @@ pip install requirements.txt
 
 
 # ORCA file
+
+
+[]
 
 
 

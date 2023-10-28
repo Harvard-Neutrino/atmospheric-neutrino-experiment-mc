@@ -26,28 +26,30 @@ def main():
         type=str,
         nargs="+",
         default=("Enu", "reco_coszen", "reco_energy"),
-        help="Set of variables you want to plot.")
+        help="Set of variables you want to plot. Deault variables are the true neutrino \
+        energy, the reconstructed cosine of zenith angle and the reconstructed neutrino \
+        energy.")
     optional.add_argument(
         "--flavor",
         type=str,
         nargs="?",
         choices=("e", "mu", "e+mu", "tau"),
         default="e+mu",
-        help="Flavor cut and breakdown.")
+        help=r"Flavor cut and breakdown. Default is break down of $\nu_{e}$ and $\nu_{\mu}$.")
     optional.add_argument(
         "--CP",
         type=str,
         nargs="?",
         choices=("nu", "antinu", "both"),
         default="both",
-        help="Flavor cut and breakdown.")
+        help="Flavor cut and breakdown. Default is break down of both.")
     optional.add_argument(
         "--interaction",
         type=str,
         nargs="?",
         choices=("CC", "NC", "ALL", False),
         default=False,
-        help="Interaction mode(s) cut and breakdown.")
+        help="Interaction mode(s) cut and breakdown. Dafult is none.")
     optional.add_argument(
         "--samples",
         type=str,
@@ -55,7 +57,8 @@ def main():
         default="All",
         help="Comma separated set of event samples you want to plot \
         (for IC: tracks or cascades; for ORCA: tracks, intermediate or cascades; \
-        for SK and HK numerical indeces (displayed when calling these detectors)).")
+        for SK and HK numerical indeces (displayed when calling these detectors)). \
+        Default is plotting all samples. Default is plotting all samples.")
     parser._action_groups.append(optional)
     args = parser.parse_args()
 
