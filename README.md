@@ -26,7 +26,6 @@ Follow the instruction below to produce your first plots:
 >plot_sim.py [-h] --experiment [{SK,SK-Htag,SK-Gd,ORCA,ICUp,HK}] --fname [FNAME]
 >				[--variables VARIABLES [VARIABLES ...]] [--flavor [{e,mu,e+mu,tau}]] [--CP [{nu,antinu,both}]]
 >               [--interaction [{CC,NC,ALL,False}]] [--samples [SAMPLES]]
->```
 >
 >**required arguments:**
 >  --experiment [{SK,SK-Htag,SK-Gd,ORCA,ICUp,HK}]
@@ -46,6 +45,7 @@ Follow the instruction below to produce your first plots:
 >                        Interaction mode(s) cut and breakdown. Dafult is no breakdown or cut.
 >  --samples [SAMPLES]   
 >						 Comma separated set of event samples you want to plot (for IC: tracks or cascades; for ORCA: tracks, intermediate or cascades; for SK and HK numerical indeces (displayed when calling these detectors)). Default is plotting all samples.
+>```
 
 
 # SuperK and HyperK files
@@ -80,7 +80,7 @@ Follow the instruction below to produce your first plots:
 * *The number of tagged neutrons is only available in SK-Htag, SK-Gd and HK.*
 
 > [!NOTE]
-> There are more variables in these files that may be useful for the user, please look at their usage in [kamioka.py](kamkioka.py).
+> There are more variables in these files that may be useful for the user, please look at their usage in [kamioka.py](pynu/kamkioka.py).
 
 
 
