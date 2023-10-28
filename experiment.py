@@ -77,6 +77,7 @@ class Experiment:
             plt.clf()
 
     def grid_plots(self):
+        """ Compute rows and columns for grid plots. """
         nsamples = len(self.plotting_samples)
         if nsamples < 4:
             return 1, nsamples
@@ -155,6 +156,7 @@ class Experiment:
 
 
     def print_samples(self):
+        """ Prints samples of the given experiment. """
         print(
             f"\nList of event samples for {self.experiment}\n---------------------------------------------\nIndex  -  Name")
         for i, name in enumerate(self.samples):
@@ -163,28 +165,37 @@ class Experiment:
 
 
     def get_CC(self):
+        """ Placeholder for getting charged-current events. """
         pass
 
     def get_NC(self):
+        """ Placeholder for getting neutral-current events. """
         pass
 
     def get_numu(self):
+        """ Placeholder for getting muon neutrinos. """
         pass
 
     def get_nue(self):
+        """ Placeholder for getting electron neutrinos. """
         pass
 
     def get_nutau(self):
+        """ Placeholder for getting tau neutrinos. """
         pass
 
     def get_neutrino(self):
+        """ Placeholder for getting neutrinos. """
         pass
 
     def get_antineutrino(self):
+        """ Placeholder for getting antineutrinos. """
         pass
 
     def get_alltrue(self):
+        """ Placeholder for getting a vector of Trues. """
         pass
 
-    def get_sample(self):
+    def get_sample(self, index):
+        """ Placeholder for getting a given sample. """
         pass

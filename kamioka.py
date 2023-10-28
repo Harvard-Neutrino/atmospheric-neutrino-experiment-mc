@@ -63,8 +63,6 @@ class SK(Experiment):
             'muedk': 'Number of tagged decay electrons',
             'neutron': 'Number of tagged neutrons',
             'itype': 'Event ID'}
-        for i,n in self.variable_names.items():
-            print(f'{"`".join(n)}`  | Test       | {i}')
 
         self.variable_logscale = {
             'ipnu': False,

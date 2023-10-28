@@ -1,10 +1,21 @@
 # Monte Carlo Simulations
-We provide the MC simlation files of atmospheric neutrinos for the following experiments in [HDF5](https: // www.hdfgroup.org / solutions / hdf5 /) format. All of them can be downloaded from the[Harvard Dataverse]()
+We provide the MC simlation files of atmospheric neutrinos for the following experiments in [HDF5](https://www.hdfgroup.org/solutions/hdf5 /) format. All of them can be downloaded from the [Harvard Dataverse]()
 - SuperK: No neutron tagging covering the first 3 phases of the experiment.
 - SuperK with neutron tagging on Hydrogen: For phases 4 and 5 of SuperK and also used as HyperK's simulation file.
 - SuperK with neutron tagging on Gd: Assumes the SuperK detector is loaded with Gd at the goal concentration of 0.1 % .
-- IceCube - Upgrade: Copied from publibly available simulation from the[IceCube Collaboration](https: // icecube.wisc.edu / data - releases / 2020 / 04 / icecube - upgrade - neutrino - monte - carlo - simulation /) converted into .hdf5 format for completeness.
+- IceCube - Upgrade: Copied from publibly available simulation from the[IceCube Collaboration](https://icecube.wisc.edu/data-releases/2020/04/icecube-upgrade-neutrino-monte-carlo-simulation/) converted into .hdf5 format for completeness.
 - ORCA: Projected simulation based on IceCube - Upgrade's upgrade Monte Carlo applying reported detector response.
+
+# Plotting some variables
+We provide a simple python code to plot variables from these Monte Carlo files with different option to get you started.
+The code uses pretty standard requirements
+- h5py
+- matplotlib
+- numpy
+and can be installed with pip:
+``` 
+pip install requirements.txt
+```
 
 # SuperK and HyperK files
 
@@ -31,18 +42,18 @@ We provide the MC simlation files of atmospheric neutrinos for the following exp
 | `ring_ip`,`reco_ring_ip`,`ip`               | Reco. ring ID                                 | ip
 | `number_of_rings`,`nring`                   | Number of reconstructed rings                 | nring
 | `muedk`,`reco_decay_e`                      | Number of tagged decay electrons              | muedk
-| `number_neutrons`,`neutrons`                | Number of tagged neutrons                     | neutron
+| `number_neutrons`,`neutrons`                | Number of tagged * neutrons                     | neutron
 | `itype`,`event_type`                        | Event ID (sample index)                       | itype
+
+* *Note that the number of tagged neutrons is only available in SK-Htag, SK-Gd and HK.*
 
 
 # IceCube-Upgrade files
 
-<img src = "/figures/IC_variables.png" width = "500" / >
 
 
 # ORCA file
 
-<img src = "/figures/ORCA_variables.png" width = "500" / >
 
 
 # Simple plotting code
@@ -51,4 +62,4 @@ To use it, make sure you meet all the requirements by doing:
 
 
 # Other
-Further questions and details can be addressed to the[paper](https: // journals.aps.org / prx / accepted / 49070K6bLa71ff0936b49c35c8a36649585379947) authors.
+Further questions and details can be addressed to the[paper](https://journals.aps.org/prx/accepted/49070K6bLa71ff0936b49c35c8a36649585379947) authors.
