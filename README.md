@@ -26,25 +26,20 @@ Follow the instruction below to produce your first plots:
 >plot_sim.py [-h] --experiment [{SK,SK-Htag,SK-Gd,ORCA,ICUp,HK}] --fname [FNAME]
 >				[--variables VARIABLES [VARIABLES ...]] [--flavor [{e,mu,e+mu,tau}]] [--CP [{nu,antinu,both}]]
 >               [--interaction [{CC,NC,ALL,False}]] [--samples [SAMPLES]]
->
->**required arguments:**
->  --experiment [{SK,SK-Htag,SK-Gd,ORCA,ICUp,HK}]
->                         Experiment you would like to use.
->  --fname [FNAME]       
->					      Path to simulation file of the experiment you would like to use (SK, SK-Htag, SK-Gd, ORCA, ICUp or HK).
->
->**options:**
->  -h, --help            show this help message and exit
->  --variables VARIABLES [VARIABLES ...]
->                        Set of variables you want to plot. Deault variables are the true neutrino energy, the reconstructed cosine of zenith angle and the reconstructed neutrino energy.
->  --flavor [{e,mu,e+mu,tau}]
->                        Flavor cut and breakdown. Default is break down of $\nu_{e}$ and $\nu_{\mu}$.
->  --CP [{nu,antinu,both}]
->                        Flavor cut and breakdown. Default is break down of both.
->  --interaction [{CC,NC,ALL,False}]
->                        Interaction mode(s) cut and breakdown. Dafult is no breakdown or cut.
->  --samples [SAMPLES]   
->						 Comma separated set of event samples you want to plot (for IC: tracks or cascades; for ORCA: tracks, intermediate or cascades; for SK and HK numerical indeces (displayed when calling these detectors)). Default is plotting all samples.
+>```
+**required arguments:**
+>```
+>  --experiment [{SK,SK-Htag,SK-Gd,ORCA,ICUp,HK}] Experiment you would like to use.
+>  --fname [FNAME] Path to simulation file of the experiment you would like to use (SK, SK-Htag, SK-Gd, ORCA, ICUp or HK).
+>```
+**options:**
+>```
+>  -h, --help show this help message and exit
+>  --variables VARIABLES [VARIABLES ...] Set of variables you want to plot. Deault variables are the true neutrino energy, the reconstructed cosine of zenith angle and the reconstructed neutrino energy.
+>  --flavor [{e,mu,e+mu,tau}] Flavor cut and breakdown. Default is break down of $\nu_{e}$ and $\nu_{\mu}$.
+>  --CP [{nu,antinu,both}] Flavor cut and breakdown. Default is break down of both.
+>  --interaction [{CC,NC,ALL,False}] Interaction mode(s) cut and breakdown. Dafult is no breakdown or cut.
+>  --samples [SAMPLES] Comma separated set of event samples you want to plot (for IC: tracks or cascades; for ORCA: tracks, intermediate or cascades; for SK and HK numerical indeces (displayed when calling these detectors)). Default is plotting all samples.
 >```
 
 
