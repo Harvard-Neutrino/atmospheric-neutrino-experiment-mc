@@ -97,18 +97,22 @@ def main():
     elif experiment == "SK":
         from kamioka import SK
         exp = SK(input_file, variables, flavors, cp, interaction, samples)
+        exp.print_samples()
         exp.plot()
     elif experiment == "SK-Htag":
         from kamioka import SK_Htag
         exp = SK_Htag(input_file, variables, flavors, cp, interaction, samples)
+        exp.print_samples()
         exp.plot()
     elif experiment == "SK-Gd":
         from kamioka import SK_Gd
         exp = SK_Gd(input_file, variables, flavors, cp, interaction, samples)
+        exp.print_samples()
         exp.plot()
     elif experiment == "HK":
         from kamioka import HK
         exp = HK(input_file, variables, flavors, cp, interaction, samples)
+        exp.print_samples()
         exp.plot()
 
 

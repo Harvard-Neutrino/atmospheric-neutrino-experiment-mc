@@ -13,9 +13,9 @@ The code uses pretty standard requirements
 - matplotlib
 - numpy
 
-and can be installed with pip:
+and can be installed with pip3:
 ``` 
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 Follow the instruction below to produce your first plots:
@@ -27,12 +27,12 @@ Follow the instruction below to produce your first plots:
 >				[--variables VARIABLES [VARIABLES ...]] [--flavor [{e,mu,e+mu,tau}]] [--CP [{nu,antinu,both}]]
 >               [--interaction [{CC,NC,ALL,False}]] [--samples [SAMPLES]]
 >```
-**required arguments:**
+>**required arguments:**
 >```
 >  --experiment [{SK,SK-Htag,SK-Gd,ORCA,ICUp,HK}] Experiment you would like to use.
 >  --fname [FNAME] Path to simulation file of the experiment you would like to use (SK, SK-Htag, SK-Gd, ORCA, ICUp or HK).
 >```
-**options:**
+>**options:**
 >```
 >  -h, --help show this help message and exit
 >  --variables VARIABLES [VARIABLES ...] Set of variables you want to plot. Deault variables are the true neutrino energy, the reconstructed cosine of zenith angle and the reconstructed neutrino energy.
@@ -75,7 +75,7 @@ Follow the instruction below to produce your first plots:
 * *The number of tagged neutrons is only available in SK-Htag, SK-Gd and HK.*
 
 > [!NOTE]
-> There are more variables in these files that may be useful for the user, please look at their usage in [kamioka.py](pynu/kamkioka.py).
+> There are more variables in these files that may be useful for the user, please look at their usage in [kamioka.py](Harvard-Neutrino/atmospheric-neutrino-experiment-mc/pynu/kamkioka.py).
 
 
 
@@ -96,4 +96,4 @@ To use it, make sure you meet all the requirements by doing:
 
 
 # Other
-Further questions and details can be addressed to the[paper](https://journals.aps.org/prx/accepted/49070K6bLa71ff0936b49c35c8a36649585379947) authors.
+For further questions and details, please check [paper](https://journals.aps.org/prx/accepted/49070K6bLa71ff0936b49c35c8a36649585379947) or reach out to the authors.

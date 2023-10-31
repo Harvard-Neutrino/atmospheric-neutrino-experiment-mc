@@ -16,7 +16,6 @@ class Experiment:
             interaction (str): Interaction modes to be plotted.
             samples ([str]): List of samples to be plotted
         """
-
         self.fdata = {}
         with h5py.File(fname, 'r') as hf:
             for var in hf.keys():
@@ -33,64 +32,6 @@ class Experiment:
         self.aux_variables = {}
 
         self.samples = []
-
-    def find_variable(self, variable_name):
-        """ Find variable in file given the name.
-        Args:
-            variable_name (str): Name of the variable
-
-        Returns:
-            str with the name of the variable in simulation file or False if
-            the variable was not found
-        """
-        for k, names in enumerate(self.variable_names.values()):
-            if variable_name in names:
-                return list(self.variable_names.keys())[k]
-        print(f'Variable {variable_name} not found.')
-        return False
-
-    def plot_variable(self, variable_name, cuts, cut_labels):
-        """ Find and plot a given variable. """
-        variable = self.find_variable(variable_name)
-        if variable:
-            """ Select variable data """
-            array = self.fdata[variable]
-            """ Setup plots """
-            rows, cols = self.grid_plots()
-            fig, axes = plt.subplots(
-                nrows=rows, ncols=cols, figsize=(
-                    3 * cols, 2.75 * rows))
-            axis = axes.flat
-            for i,s in enumerate(self.plotting_samples):
-                bins = 20
-                for k, (c, ctag) in enumerate(zip(cuts, cut_labels)):
-                    c_and_sample = c * self.get_sample(s)
-                    __, bins, __ = axis[i].hist(array[c_and_sample], bins=bins, stacked=True, label=ctag)
-                axis[i].set_title(self.samples[s], fontsize=11)
-                axis[i].set_xlabel(self.variable_labels[variable], fontsize=10)
-                axis[i].legend(loc="best")
-                ymin, ymax = axis[i].get_ylim()
-                axis[i].set_ylim([0, 1.4 * ymax])
-
-            fig.tight_layout()
-            plt.show()
-            plt.clf()
-
-    def grid_plots(self):
-        """ Compute rows and columns for grid plots. """
-        nsamples = len(self.plotting_samples)
-        if nsamples < 4:
-            return 1, nsamples
-        else:
-            sq = sqrt(nsamples)
-            return int(sq), int(round(sq)) + 1
-
-    def plot(self):
-        """ Plot all the variables requested. """
-        cuts, cut_labels = self.cuts_and_breakdown()
-        for var in self.plotting_variables:
-            self.plot_variable(var, cuts, cut_labels)
-
 
     def cuts_and_breakdown(self):
         """ Computes the cuts and breakdowns for the plots based on the
@@ -148,54 +89,121 @@ class Experiment:
         elif not self.plotting_interaction:
             self.plotting_interaction = [self.get_alltrue()]
 
-        for fl, cp, mode in product(self.plotting_flavors, self.plotting_cp, self.plotting_interaction):
+        for fl, cp, mode in product(
+                self.plotting_flavors, self.plotting_cp, self.plotting_interaction):
             cuts.append(mode[1] * cp[1] * fl[1])
             cut_labels.append(mode[0] + cp[0] + fl[0])
 
         return cuts, cut_labels
 
-
     def print_samples(self):
         """ Prints samples of the given experiment. """
         print(
-            f"\nList of event samples for {self.experiment}\n---------------------------------------------\nIndex  -  Name")
+            f"\nList of event samples for {self.experiment}\n-----------------------\
+            ---------------------------\nIndex  -  Name")
         for i, name in enumerate(self.samples):
             print(f"  {i}  ---  {name}")
         print("\n")
 
-
     def get_CC(self):
-        """ Placeholder for getting charged-current events. """
+        """ Early definition of method for getting charged-current events. """
         pass
 
     def get_NC(self):
-        """ Placeholder for getting neutral-current events. """
+        """ Early definition of method for getting neutral-current events. """
         pass
 
     def get_numu(self):
-        """ Placeholder for getting muon neutrinos. """
+        """ Early definition of method for getting muon neutrinos. """
         pass
 
     def get_nue(self):
-        """ Placeholder for getting electron neutrinos. """
+        """ Early definition of method for getting electron neutrinos. """
         pass
 
     def get_nutau(self):
-        """ Placeholder for getting tau neutrinos. """
+        """ Early definition of method for getting tau neutrinos. """
         pass
 
     def get_neutrino(self):
-        """ Placeholder for getting neutrinos. """
+        """ Early definition of method for getting neutrinos. """
         pass
 
     def get_antineutrino(self):
-        """ Placeholder for getting antineutrinos. """
+        """ Early definition of method for getting antineutrinos. """
         pass
 
     def get_alltrue(self):
-        """ Placeholder for getting a vector of Trues. """
+        """ Early definition of method for getting a vector of Trues. """
         pass
 
     def get_sample(self, index):
-        """ Placeholder for getting a given sample. """
+        """ Early definition of method for getting a given sample. """
         pass
+
+    def find_variable(self, variable_name):
+        """ Find variable in file given the name.
+        Args:
+            variable_name (str): Name of the variable
+
+        Returns:
+            str with the name of the variable in simulation file or False if
+            the variable was not found
+        """
+        for k, names in enumerate(self.variable_names.values()):
+            if variable_name in names:
+                return list(self.variable_names.keys())[k]
+        print(f'Variable {variable_name} not found.')
+        return False
+
+    def plot(self):
+        """ Plot all the variables requested. """
+        cuts, cut_labels = self.cuts_and_breakdown()
+        for var in self.plotting_variables:
+            self.plot_variable(var, cuts, cut_labels)
+
+    def plot_variable(self, variable_name, cuts, cut_labels):
+        """ Find and plot a given variable. """
+        variable = self.find_variable(variable_name)
+        if variable:
+            """ Select variable data """
+            # array = self.fdata[variable][:self.weights.size]
+            array = self.fdata[variable]
+            # for n in array:
+            #     print(n)
+            """ Setup plots """
+            rows, cols = self.grid_plots()
+            fig, axes = plt.subplots(
+                nrows=rows, ncols=cols, figsize=(
+                    3 * cols, 2.75 * rows))
+            axis = axes.flat
+            for i, s in enumerate(self.plotting_samples):
+                bins = 20
+                for k, (c, ctag) in enumerate(zip(cuts, cut_labels)):
+                    cut_and_sample = c * self.get_sample(s)
+                    # print(array.size)
+                    __, bins, __ = axis[i].hist(
+                        array[cut_and_sample], weights=self.normalization * self.weights[cut_and_sample],
+                        bins=bins, stacked=True, label=ctag)
+                axis[i].set_title(self.samples[s], fontsize=10)
+                axis[i].set_xlabel(self.variable_labels[variable], fontsize=8)
+                axis[i].legend(loc="best", fontsize=9, labelspacing=0.3)
+                ymin, ymax = axis[i].get_ylim()
+                axis[i].set_ylim([0, 1.4 * ymax])
+            fig.tight_layout()
+            plt.show()
+            plt.clf()
+
+    def grid_plots(self):
+        """ Compute rows and columns for grid plots. """
+        nsamples = len(self.plotting_samples)
+        if nsamples < 4:
+            return 1, nsamples
+        else:
+            sq = sqrt(nsamples)
+            if int(sq)**2 == nsamples:
+                return int(sq), int(sq)
+            elif int(sq) * int(round(sq)) >= nsamples:
+                return int(sq), int(round(sq))
+            else:
+                return int(sq), int(round(sq)) + 1
