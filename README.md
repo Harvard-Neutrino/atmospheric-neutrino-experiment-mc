@@ -69,7 +69,7 @@ plot_sim.py [-h] --experiment [{SK,SK-Htag,SK-Gd,ORCA,ICUp,HK}] --fname [FNAME]
 
 * *The number of tagged neutrons is only available in SK-Htag, SK-Gd and HK.*
 
-> [!INFO]
+> [!NOTE]
 > There are more variables in these files that may be useful for the user, please look at their usage in [kamioka.py](https://github.com/Harvard-Neutrino/atmospheric-neutrino-experiment-mc/blob/main/kamioka.py).
 
 
@@ -95,7 +95,7 @@ plot_sim.py [-h] --experiment [{SK,SK-Htag,SK-Gd,ORCA,ICUp,HK}] --fname [FNAME]
 | `diff_cross_section`,`dxsec`                | Differential cross section                           | dxsec            |
 | ------------------------------------------- | ---------------------------------------------------- | ---------------- |
 
-> [!INFO]
+> [!NOTE]
 > There are more variables in these files that may be useful for the user, please look at their usage in [kamioka.py](https://github.com/Harvard-Neutrino/atmospheric-neutrino-experiment-mc/blob/main/south_pole.py).
 
 
