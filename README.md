@@ -3,7 +3,7 @@ We provide the MC simlation files of atmospheric neutrinos for the following exp
 - SuperK: No neutron tagging covering the first 3 phases of the experiment.
 - SuperK with neutron tagging on Hydrogen: For phases 4 and 5 of SuperK and also used as HyperK's simulation file.
 - SuperK with neutron tagging on Gd: Assumes the SuperK detector is loaded with Gd at the goal concentration of 0.1 % .
-- IceCube - Upgrade: Copied from publibly available simulation from the[IceCube Collaboration](https://icecube.wisc.edu/data-releases/2020/04/icecube-upgrade-neutrino-monte-carlo-simulation/) converted into .hdf5 format for completeness.
+- IceCube - Upgrade: Copied from publibly available simulation from the [IceCube Collaboration](https://icecube.wisc.edu/data-releases/2020/04/icecube-upgrade-neutrino-monte-carlo-simulation/) converted into .hdf5 format for completeness.
 - ORCA: Projected simulation based on IceCube - Upgrade's upgrade Monte Carlo applying reported detector response.
 
 # Plotting some variables
