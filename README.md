@@ -96,7 +96,7 @@ plot_sim.py [-h] --experiment [{SK,SK-Htag,SK-Gd,ORCA,ICUp,HK}] --fname [FNAME]
 | ------------------------------------------- | ---------------------------------------------------- | ---------------- |
 
 > [!NOTE]
-> There are more variables in these files that may be useful for the user, please look at their usage in [kamioka.py](https://github.com/Harvard-Neutrino/atmospheric-neutrino-experiment-mc/blob/main/south_pole.py).
+> There are more variables in these files that may be useful for the user, please look at their usage in [south_pole.py](https://github.com/Harvard-Neutrino/atmospheric-neutrino-experiment-mc/blob/main/south_pole.py).
 
 
 ## ORCA file
@@ -104,4 +104,4 @@ The simulation file for ORCA follows the same notation and contains the same var
 
 
 ## Other
-For further questions and details, please check [paper](https://journals.aps.org/prx/accepted/49070K6bLa71ff0936b49c35c8a36649585379947) or reach out to the authors.
+For further questions and details, please check [our joint analysis paper](https://journals.aps.org/prx/accepted/49070K6bLa71ff0936b49c35c8a36649585379947) or reach out to the authors.
