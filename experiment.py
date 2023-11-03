@@ -89,8 +89,7 @@ class Experiment:
     def print_samples(self):
         """ Prints samples of the given experiment. """
         print(
-            f"\nList of event samples for {self.experiment}\n-----------------------\
-            ---------------------------\nIndex  -  Name")
+            f"\nList of event samples for {self.experiment}\n--------------------------------------------------\nIndex  -  Name")
         for i, name in enumerate(self.samples):
             print(f"  {i}  ---  {name}")
         print("\n")

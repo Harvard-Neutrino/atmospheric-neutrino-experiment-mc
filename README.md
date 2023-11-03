@@ -17,6 +17,7 @@ pip3 install -r requirements.txt
 ```
 
 Follow the instruction below to produce your first plots:
+
 **usage:**
 ```
 plot_sim.py [-h] --experiment [{SK,SK-Htag,SK-Gd,ORCA,ICUp,HK}] --fname [FNAME]
@@ -99,16 +100,7 @@ plot_sim.py [-h] --experiment [{SK,SK-Htag,SK-Gd,ORCA,ICUp,HK}] --fname [FNAME]
 
 
 # ORCA file
-
 The simulation file for ORCA follows the same notation and contains the same variables as the IceCube Upgrade one.
-
-[]
-
-
-
-# Simple plotting code
-To use it, make sure you meet all the requirements by doing:
-> pip install - r requirements.txt
 
 
 # Other
