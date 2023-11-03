@@ -26,11 +26,9 @@ class Experiment:
         self.plotting_cp = cp
         self.plotting_interaction = interaction
         self.plotting_samples = samples
-
         self.variable_names = {}
         self.variable_labels = {}
         self.aux_variables = {}
-
         self.samples = []
 
     def cuts_and_breakdown(self):
@@ -41,26 +39,21 @@ class Experiment:
         """
         cuts = []
         cut_labels = []
-
         """ Samples """
         if self.plotting_samples == "All":
             self.plotting_samples = range(len(self.samples))
         else:
             if "tracks" in self.plotting_samples:
-                i = self.plotting_samples.index("tracks")
+                i = self.plotting_samples.index("cascades")
                 self.plotting_samples[i] = 0
             elif "cascades" in self.plotting_samples:
-                i = self.plotting_samples.index("cascades")
-                if len(self.samples) == 3:
-                    self.plotting_samples[i] = 2
-                else:
-                    self.plotting_samples[i] = 1
+                i = self.plotting_samples.index("tracks")
+                self.plotting_samples[i] = 1
             elif "intermediate" in self.plotting_samples:
                 i = self.plotting_samples.index("intermediate")
-                self.plotting_samples[i] = 1
+                self.plotting_samples[i] = 2
             else:
                 self.plotting_samples = list(map(int, self.plotting_samples))
-
         """ Flavors """
         if self.plotting_flavors == "e":
             self.plotting_flavors = [self.get_nue()]
@@ -70,7 +63,6 @@ class Experiment:
             self.plotting_flavors = [self.get_numu(), self.get_nue()]
         elif self.plotting_flavors == "tau":
             self.plotting_flavors = [self.get_nutau()]
-
         """ (Anti)neutrinos """
         if self.plotting_cp == "nu":
             self.plotting_cp = [self.get_neutrino()]
@@ -78,7 +70,6 @@ class Experiment:
             self.plotting_cp = [self.get_antineutrino()]
         elif self.plotting_cp == "both":
             self.plotting_cp = [self.get_neutrino(), self.get_antineutrino()]
-
         """ Interactions """
         if self.plotting_interaction == "CC":
             self.plotting_interaction = [self.get_CC()]
@@ -88,12 +79,11 @@ class Experiment:
             self.plotting_interaction = [self.get_CC(), self.get_NC()]
         elif not self.plotting_interaction:
             self.plotting_interaction = [self.get_alltrue()]
-
+        """ Combine cuts and labels. """
         for fl, cp, mode in product(
                 self.plotting_flavors, self.plotting_cp, self.plotting_interaction):
             cuts.append(mode[1] * cp[1] * fl[1])
             cut_labels.append(mode[0] + cp[0] + fl[0])
-
         return cuts, cut_labels
 
     def print_samples(self):
@@ -167,10 +157,7 @@ class Experiment:
         variable = self.find_variable(variable_name)
         if variable:
             """ Select variable data """
-            # array = self.fdata[variable][:self.weights.size]
             array = self.fdata[variable]
-            # for n in array:
-            #     print(n)
             """ Setup plots """
             rows, cols = self.grid_plots()
             fig, axes = plt.subplots(
@@ -181,15 +168,22 @@ class Experiment:
                 bins = 20
                 for k, (c, ctag) in enumerate(zip(cuts, cut_labels)):
                     cut_and_sample = c * self.get_sample(s)
-                    # print(array.size)
                     __, bins, __ = axis[i].hist(
                         array[cut_and_sample], weights=self.normalization * self.weights[cut_and_sample],
                         bins=bins, stacked=True, label=ctag)
-                axis[i].set_title(self.samples[s], fontsize=10)
+                axis[i].set_title(self.samples[s], fontsize=9)
                 axis[i].set_xlabel(self.variable_labels[variable], fontsize=8)
-                axis[i].legend(loc="best", fontsize=9, labelspacing=0.3)
+                axis[i].legend(
+                    loc="best",
+                    fontsize=7,
+                    labelspacing=0.1,
+                    ncol=2)
                 ymin, ymax = axis[i].get_ylim()
-                axis[i].set_ylim([0, 1.4 * ymax])
+                if self.variable_logscale[variable]:
+                    axis[i].set_ylim([0.00001 * ymax, 5 * ymax])
+                    axis[i].set_yscale("log")
+                else:
+                    axis[i].set_ylim([0, 1.5 * ymax])
             fig.tight_layout()
             plt.show()
             plt.clf()

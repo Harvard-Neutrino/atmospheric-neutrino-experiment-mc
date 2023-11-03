@@ -2,8 +2,6 @@ from experiment import Experiment
 import numpy as np
 
 """ Class for the Super-Kamiokande experiment with no neutron tagging. """
-
-
 class SK(Experiment):
     def __init__(self, fname, variables, flavors, cp, interaction, samples):
         super(
@@ -60,7 +58,7 @@ class SK(Experiment):
             "dirlepY": r"$u_{y}^{lep}$",
             "dirlepZ": r"$u_{z}^{lep}$",
             "mode": "Interaction mode (NEUT)",
-            "imass": r"$\pi^{0}$ invariant mass",
+            "imass": r"$\pi^{0}$ invariant mass (GeV/c^2)",
             "pmax": "Reco. momentum of most energetic ring (GeV/c)",
             "evis": "Reco. Energy (GeV)",
             "recodirX": r"$u_{x}^{reco}$",
@@ -117,6 +115,8 @@ class SK(Experiment):
         number_of_events = np.sum(self.weights)
         mc_years = number_of_events / sk_rate_yr
         self.normalization = 1 / mc_years  # events / SK / year
+        # self.normalization = 1.2 / mc_years  # events / SK / year
+        # (with expanded fiducial volume 20% more events are expected)
 
         """ Names of the SuperK event samples. """
         self.samples = [
@@ -195,8 +195,6 @@ class SK(Experiment):
 
 
 """ Class for the Super-Kamiokande experiment with H-neutron tagging. """
-
-
 class SK_Htag(SK):
     def __init__(self, fname, variables, flavors, cp, interaction, samples):
         super(
@@ -248,8 +246,6 @@ class SK_Htag(SK):
 
 
 """ Class for the Super-Kamiokande experiment with Gd-neutron tagging. """
-
-
 class SK_Gdtag(SK_Htag):
     def __init__(self, fname, variables, flavors, cp, interaction, samples):
         super(
@@ -272,8 +268,6 @@ class SK_Gdtag(SK_Htag):
 
 
 """ Class for the Hyper-Kamiokande experiment assuming H-neutron tagging. """
-
-
 class HK(SK_Htag):
     def __init__(self, fname, variables, flavors, cp, interaction, samples):
         super(
@@ -290,4 +284,4 @@ class HK(SK_Htag):
         self.experiment = "HyperK"
 
         """ Assuming HK will have 8.3 times larger volume than SK. """
-        self.normalization = 1 / mc_years  # events / SK / year
+        self.normalization *= 8.3  # events / HK / year

@@ -105,8 +105,14 @@ def main():
         exp.print_samples()
         exp.plot()
     elif experiment == "SK-Gd":
-        from kamioka import SK_Gd
-        exp = SK_Gd(input_file, variables, flavors, cp, interaction, samples)
+        from kamioka import SK_Gdtag
+        exp = SK_Gdtag(
+            input_file,
+            variables,
+            flavors,
+            cp,
+            interaction,
+            samples)
         exp.print_samples()
         exp.plot()
     elif experiment == "HK":
