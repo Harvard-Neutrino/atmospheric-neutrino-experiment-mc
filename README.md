@@ -1,5 +1,5 @@
 # Monte Carlo Simulations
-We provide the MC simlation files of atmospheric neutrinos for the following experiments in [HDF5](https://www.hdfgroup.org/solutions/hdf5 /) format. All of them can be downloaded from the [Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/OS5N7U)
+We provide the MC simlation files of atmospheric neutrinos for the following experiments in [HDF5](https://www.hdfgroup.org/solutions/hdf5/) format. All of them can be downloaded from the [Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/OS5N7U)
 - SuperK: No neutron tagging covering the first 3 phases of the experiment.
 - SuperK with neutron tagging on Hydrogen: For phases 4 and 5 of SuperK and also used as HyperK's simulation file.
 - SuperK with neutron tagging on Gd: Assumes the SuperK detector is loaded with Gd at the goal concentration of 0.1 % .
